@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Shader, Pixelate, Plasma, SineWave } from 'shaders/vue'
+import { Shader, Pixelate, Plasma, SineWave } from "shaders/vue";
 </script>
 
 <template>
@@ -13,7 +13,7 @@ import { Shader, Pixelate, Plasma, SineWave } from 'shaders/vue'
         inputMax: 1,
         inputMin: 0,
         outputMax: 1,
-        outputMin: 0.16
+        outputMin: 0.16,
       }"
       :roundness="0.2"
       :scale="68"
@@ -21,7 +21,7 @@ import { Shader, Pixelate, Plasma, SineWave } from 'shaders/vue'
     >
       <Plasma
         :balance="57"
-        color-a="#c8f031"
+        color-a="#C364FA"
         color-b="#09090b"
         :contrast="1.6"
         :density="3.3"
@@ -34,7 +34,7 @@ import { Shader, Pixelate, Plasma, SineWave } from 'shaders/vue'
       :amplitude="0.1"
       :position="{
         x: 0.5,
-        y: 1
+        y: 1,
       }"
       :softness="0.8"
       :thickness="0.7"

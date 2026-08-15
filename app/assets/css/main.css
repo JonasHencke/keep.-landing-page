@@ -4,20 +4,20 @@
 @source "../../../content/**/*";
 
 @theme static {
-  --font-sans: 'Instrument Sans', -apple-system, sans-serif;
-  --font-mono: 'IBM Plex Mono', monospace;
+  --font-sans: "Instrument Sans", -apple-system, sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
 
-  --color-lime-50: #fbfde8;
-  --color-lime-100: #f5fbb3;
-  --color-lime-200: #eef87e;
-  --color-lime-300: #ddf34c;
-  --color-lime-400: #c8f031;
-  --color-lime-500: #a9d316;
-  --color-lime-600: #84a70e;
-  --color-lime-700: #647f11;
-  --color-lime-800: #4f6413;
-  --color-lime-900: #435514;
-  --color-lime-950: #232f06;
+  --color-purple-50: #f5edff;
+  --color-purple-100: #e8d9ff;
+  --color-purple-200: #d5b0ff;
+  --color-purple-300: #bd86ff;
+  --color-purple-400: #c364fa;
+  --color-purple-500: #a95ef8;
+  --color-purple-600: #7f3ae9;
+  --color-purple-700: #3c00b3;
+  --color-purple-800: #2d0089;
+  --color-purple-900: #22005f;
+  --color-purple-950: #16003d;
 
   --animate-shimmer: shimmer 8s ease-in-out infinite alternate;
 
