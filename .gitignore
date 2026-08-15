@@ -1,1 +1,9 @@
 node_modules
+.nuxt
+.data
+.output
+.nitro
+.cache
+dist
+.env
+.DS_Store
