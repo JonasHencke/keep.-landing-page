@@ -11,11 +11,55 @@ if (!page.value) {
 const title = page.value?.seo?.title || page.value?.title
 const description = page.value?.seo?.description || page.value?.description
 
+// Set NUXT_PUBLIC_SITE_URL (e.g. https://keep-app.com) to emit absolute
+// canonical/OG/schema.org URLs — crawlers and social scrapers prefer them.
+const { siteUrl } = useRuntimeConfig().public
+const absoluteUrl = (path: string) => siteUrl ? new URL(path, siteUrl).toString() : path
+
 useSeoMeta({
   title,
   ogTitle: title,
   description,
-  ogDescription: description
+  ogDescription: description,
+  ogType: 'website',
+  ogSiteName: 'Keep.',
+  ogImage: absoluteUrl('/og-image.png'),
+  ogImageWidth: 1200,
+  ogImageHeight: 630,
+  ogImageAlt: title,
+  twitterTitle: title,
+  twitterDescription: description,
+  twitterImage: absoluteUrl('/og-image.png')
+})
+
+useHead({
+  link: [
+    // Preload the hero image: it is the LCP element on every viewport.
+    {
+      rel: 'preload',
+      as: 'image',
+      type: 'image/webp',
+      href: page.value.hero.image.src,
+      imagesrcset: page.value.hero.image.srcset,
+      imagesizes: page.value.hero.image.sizes,
+      fetchpriority: 'high'
+    },
+    ...siteUrl ? [{ rel: 'canonical' as const, href: absoluteUrl('/') }] : []
+  ],
+  script: [{
+    type: 'application/ld+json',
+    innerHTML: JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'MobileApplication',
+      'name': 'Keep. — Photo Cleaner',
+      'applicationCategory': 'UtilitiesApplication',
+      'operatingSystem': 'iOS',
+      'description': description,
+      'url': siteUrl || undefined,
+      'screenshot': absoluteUrl(page.value.hero.image.src),
+      'featureList': page.value.hero.highlights.map(highlight => highlight.label)
+    })
+  }]
 })
 
 const heroTitle = computed(() => {
@@ -60,13 +104,14 @@ const { copy, copied } = useClipboard()
   <div v-if="page">
     <!-- Hero -->
     <UPageHero
+      orientation="horizontal"
       :ui="{
-        root: 'pb-24 sm:pb-32',
-        container: 'relative z-10 lg:py-32',
-        wrapper: 'flex flex-col items-center',
-        title: 'sm:text-6xl lg:text-7xl xl:text-[80px] tracking-tighter leading-[1.05]',
-        description: 'mt-5 max-w-xl mx-auto text-base sm:text-lg leading-relaxed text-default',
-        links: 'gap-3'
+        root: 'pb-16 sm:pb-24',
+        container: 'relative z-10 py-16 sm:py-24 lg:py-28 gap-12 sm:gap-y-16 lg:gap-16 lg:grid-cols-[1.1fr_1fr]',
+        wrapper: 'text-center lg:text-left',
+        title: 'text-4xl sm:text-6xl lg:text-6xl xl:text-7xl tracking-tighter leading-[1.05]',
+        description: 'mt-5 max-w-xl mx-auto lg:mx-0 text-base sm:text-lg leading-relaxed text-default',
+        footer: 'mt-8 sm:mt-10'
       }"
     >
       <template #top>
@@ -78,7 +123,7 @@ const { copy, copied } = useClipboard()
       </template>
 
       <template #headline>
-        <Motion v-bind="enterMotion(0.2)">
+        <Motion v-bind="enterMotion(0.05)">
           <UBadge
             color="neutral"
             variant="soft"
@@ -99,7 +144,7 @@ const { copy, copied } = useClipboard()
       <template #title>
         <Motion
           as="span"
-          v-bind="enterMotion(0.35)"
+          v-bind="enterMotion(0.12)"
           class="inline-block"
         >
           {{ heroTitle.primary }}
@@ -120,46 +165,54 @@ const { copy, copied } = useClipboard()
       <template #description>
         <Motion
           as="span"
-          v-bind="enterMotion(0.5)"
+          v-bind="enterMotion(0.24)"
           class="inline-block"
         >
           {{ page.description }}
         </Motion>
       </template>
 
-      <template #links>
-        <Motion
-          class="flex flex-wrap justify-center gap-6"
-          v-bind="enterMotion(0.65)"
-        >
-          <UButton
-            v-for="link in page.hero.links"
-            :key="link.label"
-            v-bind="link"
-          />
-        </Motion>
+      <template #footer>
+        <div class="flex flex-col items-center gap-8 lg:items-start">
+          <Motion
+            class="flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:justify-center lg:justify-start"
+            v-bind="enterMotion(0.34)"
+          >
+            <UButton
+              v-for="link in page.hero.links"
+              :key="link.label"
+              v-bind="link"
+              class="w-full justify-center sm:w-auto"
+            />
+          </Motion>
+
+          <Motion
+            as="ul"
+            class="flex flex-col items-start gap-x-6 gap-y-2 sm:flex-row sm:flex-wrap sm:items-center sm:justify-center lg:justify-start"
+            v-bind="enterMotion(0.44)"
+          >
+            <li
+              v-for="highlight in page.hero.highlights"
+              :key="highlight.label"
+              class="flex items-center gap-2 text-sm text-dimmed"
+            >
+              <UIcon
+                :name="highlight.icon"
+                class="size-4 shrink-0 text-primary"
+              />
+              {{ highlight.label }}
+            </li>
+          </Motion>
+        </div>
       </template>
 
       <Motion
         as-child
-        v-bind="enterMotion(0.85)"
-        class="max-w-2xl mx-auto w-full"
+        v-bind="enterMotion(0.18)"
       >
-        <HeroTerminal :lines="page.terminal.lines" />
-      </Motion>
-
-      <Motion
-        class="max-w-lg mx-auto w-full"
-        v-bind="scrollMotion(0.95)"
-      >
-        <UPageLogos
-          :title="page.logos.title"
-          :items="page.logos.items"
-          :ui="{
-            title: 'font-mono uppercase text-xs tracking-[0.12em] text-dimmed',
-            logos: 'gap-0',
-            logo: 'text-muted size-6'
-          }"
+        <HeroShowcase
+          v-bind="page.hero.image"
+          class="mx-auto w-full max-w-80 sm:max-w-105 lg:mx-0 lg:ml-auto lg:max-w-115 xl:max-w-130"
         />
       </Motion>
     </UPageHero>

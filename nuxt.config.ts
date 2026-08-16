@@ -26,6 +26,14 @@ export default defineNuxtConfig({
     }
   },
 
+  runtimeConfig: {
+    public: {
+      // Production domain, e.g. https://keep-app.com — used for canonical,
+      // Open Graph and schema.org URLs. Empty falls back to relative URLs.
+      siteUrl: process.env.NUXT_PUBLIC_SITE_URL || ''
+    }
+  },
+
   compatibilityDate: '2026-06-30',
 
   nitro: {

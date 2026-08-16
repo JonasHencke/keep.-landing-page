@@ -1,71 +1,36 @@
 seo:
-  title: Nuxt Landing Template
-  description: A beautiful and customizable landing page template built with Nuxt UI. Features hero section, animated terminal, metrics, and CTA — ready to deploy.
-title: "Observe less.\nUnderstand more."
-description: Map your entire system in real-time, surface anomalies before they cascade, and eliminate the dashboards you never needed.
+  title: "Keep. — Photo Cleaner for iPhone | Declutter & Free Up Storage"
+  description: "Keep. is the swipe-to-sort photo cleaner for iPhone: swipe left to delete, right to keep. Clear out screenshots and duplicates and free up storage fast."
+title: "Declutter your camera roll.\nFree up storage."
+description: Keep. turns photo cleanup into a single swipe — left to delete, right to keep. Work through screenshots, duplicates and blurry shots and win back gigabytes on your iPhone in minutes.
 hero:
-  headline: "v2.0 — Now with predictive alerting"
+  headline: "Keep. — Photo Cleaner for iPhone"
+  image:
+    src: /images/keep-photo-cleaner-app-880.webp
+    srcset: "/images/keep-photo-cleaner-app-440.webp 440w, /images/keep-photo-cleaner-app-640.webp 640w, /images/keep-photo-cleaner-app-880.webp 880w, /images/keep-photo-cleaner-app-1268.webp 1268w"
+    sizes: "(min-width: 1280px) 520px, (min-width: 1024px) 460px, (min-width: 640px) 420px, 320px"
+    alt: Keep. photo cleaner app running on an iPhone — swipe a photo left to delete it or right to keep it
+    width: 1268
+    height: 1389
   links:
-    - label: Start for free
+    - label: Download on the App Store
+      icon: i-simple-icons-appstore
       color: primary
       size: xl
       to: '#'
-    - label: View demo
+      target: _blank
+    - label: See how it works
       size: xl
       color: neutral
       variant: soft
-      to: '#'
-terminal:
-  lines:
-    - segments:
-        - text: "$ "
-          style: prompt
-        - text: "npx telemetry"
-          style: cmd
-        - text: " init"
-          style: flag
-    - segments:
-        - text: "→ Scanning service topology..."
-          style: dim
-    - segments:
-        - text: "→ Found "
-          style: dim
-        - text: "23 services"
-          style: cmd
-        - text: ", "
-          style: dim
-        - text: "847 endpoints"
-          style: cmd
-        - text: ", "
-          style: dim
-        - text: "12 databases"
-          style: cmd
-    - segments:
-        - text: "→ Deploying collector agents "
-          style: dim
-        - text: "✓"
-          style: success
-    - segments:
-        - text: "→ Baseline established in "
-          style: dim
-        - text: "340ms"
-          style: metric-good
-    - segments:
-        - text: " "
-          style: dim
-    - segments:
-        - text: "✓ Live at "
-          style: success
-        - text: "https://app.example.com/acme-corp"
-          style: url
-logos:
-  title: Trusted by engineering teams at
-  items:
-    - i-simple-icons-vercel
-    - i-simple-icons-github
-    - i-simple-icons-linear
-    - i-simple-icons-supabase
-    - i-simple-icons-stripe
+      to: '#features'
+  highlights:
+    - icon: i-lucide-hand
+      label: Swipe left to delete, right to keep
+    - icon: i-lucide-undo-2
+      label: Undo any swipe instantly
+    - icon: i-lucide-folder-plus
+      label: Sort keepers into albums
 features:
   headline: Capabilities
   title: "Every signal, one surface."

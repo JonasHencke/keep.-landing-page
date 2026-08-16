@@ -9,7 +9,10 @@ useHead({
     { key: 'theme-color', name: 'theme-color', content: color }
   ],
   link: [
-    { rel: 'icon', href: '/favicon.ico' }
+    { rel: 'icon', href: '/favicon.ico', sizes: '48x48 32x32 16x16' },
+    { rel: 'icon', type: 'image/png', href: '/favicon-32.png', sizes: '32x32' },
+    { rel: 'icon', type: 'image/png', href: '/favicon-192.png', sizes: '192x192' },
+    { rel: 'apple-touch-icon', href: '/apple-touch-icon.png', sizes: '180x180' }
   ],
   htmlAttrs: {
     lang: 'en'
@@ -17,8 +20,8 @@ useHead({
 })
 
 useSeoMeta({
-  ogImage: 'https://ui.nuxt.com/assets/templates/nuxt/landing-light.png',
-  twitterCard: 'summary_large_image'
+  twitterCard: 'summary_large_image',
+  applicationName: 'Keep.'
 })
 </script>
 

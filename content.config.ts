@@ -21,19 +21,19 @@ export const collections = {
     schema: z.object({
       hero: z.object({
         headline: z.string().optional(),
+        image: z.object({
+          src: z.string().nonempty().editor({ input: 'media' }),
+          srcset: z.string().optional(),
+          sizes: z.string().optional(),
+          alt: z.string().nonempty(),
+          width: z.number(),
+          height: z.number()
+        }),
+        highlights: z.array(z.object({
+          icon: z.string().editor({ input: 'icon' }),
+          label: z.string().nonempty()
+        })),
         links: z.array(createLinkSchema())
-      }),
-      terminal: z.object({
-        lines: z.array(z.object({
-          segments: z.array(z.object({
-            text: z.string(),
-            style: z.string()
-          }))
-        }))
-      }),
-      logos: z.object({
-        title: z.string().nonempty(),
-        items: z.array(z.string())
       }),
       features: z.object({
         headline: z.string().optional(),
