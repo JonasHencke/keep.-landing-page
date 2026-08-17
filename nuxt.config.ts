@@ -2,7 +2,6 @@
 export default defineNuxtConfig({
   modules: [
     '@nuxt/eslint',
-    '@nuxt/content',
     '@nuxt/ui',
     '@vueuse/nuxt',
     'motion-v/nuxt'
@@ -13,18 +12,6 @@ export default defineNuxtConfig({
   },
 
   css: ['~/assets/css/main.css'],
-
-  content: {
-    experimental: {
-      sqliteConnector: 'native'
-    }
-  },
-
-  mdc: {
-    highlight: {
-      noApiRoute: false
-    }
-  },
 
   runtimeConfig: {
     public: {
