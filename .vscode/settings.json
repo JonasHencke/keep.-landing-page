@@ -1,0 +1,10 @@
+{
+  // Dieses Projekt formatiert über ESLint (@nuxt/eslint mit stylistic rules),
+  // nicht über Prettier. Siehe nuxt.config.ts -> eslint.config.stylistic.
+  "prettier.enable": false,
+  "editor.formatOnSave": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  "eslint.useFlatConfig": true
+}
