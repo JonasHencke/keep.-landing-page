@@ -66,15 +66,26 @@ const page = {
       description: 'Keep. never uploads your photos. Everything is processed and stored on your device — no cloud, no tracking, no exceptions.'
     }]
   },
-  metrics: {
-    headline: 'By the numbers',
-    title: 'Built for scale you haven\'t hit yet.',
-    description: 'Process billions of events per day across thousands of production environments with an architecture designed for the workloads of 2030.',
+  screenshots: {
+    headline: 'Screenshots',
+    title: 'See Keep. in action.',
+    description: 'Pick your photo set, swipe through your camera roll one shot at a time, and undo any swipe instantly.',
     items: [
-      { value: '99.99%', label: 'Uptime SLA', class: 'text-success' },
-      { value: '<50ms', label: 'P99 query', class: 'text-primary' },
-      { value: '14B+', label: 'Events / day', class: 'text-info' },
-      { value: '4 min', label: 'Early warning', class: 'text-warning' }
+      {
+        src: '/images/keep-screenshot-1-880.webp',
+        srcset: '/images/keep-screenshot-1-440.webp 440w, /images/keep-screenshot-1-640.webp 640w, /images/keep-screenshot-1-880.webp 880w',
+        alt: 'Keep. sort screen — pick your whole library or an album and work through it month by month'
+      },
+      {
+        src: '/images/keep-screenshot-2-880.webp',
+        srcset: '/images/keep-screenshot-2-440.webp 440w, /images/keep-screenshot-2-640.webp 640w, /images/keep-screenshot-2-880.webp 880w',
+        alt: 'Keep. review screen — swipe left to trash a photo, with Delete and Undo always within reach'
+      },
+      {
+        src: '/images/keep-screenshot-3-880.webp',
+        srcset: '/images/keep-screenshot-3-440.webp 440w, /images/keep-screenshot-3-640.webp 640w, /images/keep-screenshot-3-880.webp 880w',
+        alt: 'Keep. review screen — swipe right to keep a photo, marked with a green checkmark'
+      }
     ]
   },
   cta: {
@@ -164,11 +175,11 @@ function scrollMotion(delay: number = 0) {
   }
 }
 
-function staggerMotion(index: number = 0) {
+function staggerMotion(index: number = 0, amount: number = 1) {
   return {
     initial: { opacity: 0 },
     whileInView: { opacity: 1 },
-    inViewOptions: { once: true, amount: 1 },
+    inViewOptions: { once: true, amount },
     transition: { duration: 0.6, delay: index * 0.08 }
   }
 }
@@ -358,12 +369,11 @@ const { copy, copied } = useClipboard()
       </div>
     </UPageSection>
 
-    <!-- Metrics -->
+    <!-- Screenshots -->
     <UPageSection
-      id="metrics"
+      id="screenshots"
       :ui="{
         root: 'py-24 sm:py-32 scroll-mt-(--ui-header-height)',
-        container: 'max-w-5xl',
         headline: 'font-mono font-medium text-xs text-primary uppercase tracking-[0.12em] text-center',
         title: 'max-w-lg mx-auto',
         description: 'max-w-md mx-auto text-dimmed'
@@ -375,7 +385,7 @@ const { copy, copied } = useClipboard()
           v-bind="scrollMotion()"
           class="inline-block"
         >
-          {{ page.metrics.headline }}
+          {{ page.screenshots.headline }}
         </Motion>
       </template>
 
@@ -385,7 +395,7 @@ const { copy, copied } = useClipboard()
           v-bind="scrollMotion(0.1)"
           class="inline-block"
         >
-          {{ page.metrics.title }}
+          {{ page.screenshots.title }}
         </Motion>
       </template>
 
@@ -395,31 +405,31 @@ const { copy, copied } = useClipboard()
           v-bind="scrollMotion(0.2)"
           class="inline-block"
         >
-          {{ page.metrics.description }}
+          {{ page.screenshots.description }}
         </Motion>
       </template>
 
-      <div class="rounded-2xl border border-default bg-default overflow-hidden">
-        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-px">
-          <Motion
-            v-for="(metric, index) in page.metrics.items"
-            :key="metric.label"
-            v-bind="staggerMotion(index)"
-          >
-            <UPageCard
-              :title="metric.value"
-              :description="metric.label"
-              variant="ghost"
-              class="rounded-none duration-300"
-              :ui="{
-                root: 'text-center',
-                wrapper: 'items-center',
-                title: ['text-4xl font-bold tracking-tight leading-none', metric.class],
-                description: 'font-mono text-xs uppercase tracking-[0.06em] text-dimmed mt-3'
-              }"
-            />
-          </Motion>
-        </div>
+      <div class="flex flex-wrap justify-center gap-4 sm:gap-6">
+        <Motion
+          v-for="(screenshot, index) in page.screenshots.items"
+          :key="screenshot.src"
+          v-bind="staggerMotion(index, 0.2)"
+          class="w-full max-w-75 sm:w-[calc(50%-0.75rem)] sm:max-w-90 lg:w-[calc((100%-4rem)/3)] lg:max-w-none"
+        >
+          <figure class="rounded-2xl border border-default overflow-hidden">
+            <img
+              :src="screenshot.src"
+              :srcset="screenshot.srcset"
+              sizes="(min-width: 1024px) 310px, (min-width: 640px) 45vw, calc(100vw - 2rem)"
+              :alt="screenshot.alt"
+              width="1284"
+              height="2778"
+              loading="lazy"
+              decoding="async"
+              class="block w-full h-auto"
+            >
+          </figure>
+        </Motion>
       </div>
     </UPageSection>
 
