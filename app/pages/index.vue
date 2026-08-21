@@ -28,7 +28,7 @@ const page = {
       size: 'xl',
       color: 'neutral',
       variant: 'soft',
-      to: '#features'
+      to: '#how-it-works'
     }],
     highlights: [
       { icon: 'i-lucide-hand', label: 'Swipe left to delete, right to keep' },
@@ -36,34 +36,34 @@ const page = {
       { icon: 'i-lucide-folder-plus', label: 'Sort keepers into albums' }
     ]
   },
-  features: {
-    headline: 'Capabilities',
-    title: 'Every signal, one surface.',
-    description: 'No more tab-switching between metrics, traces, and logs. Correlate everything into a single explorable topology.',
+  howItWorks: {
+    headline: 'How it works',
+    title: 'Swipe. Sort. Done.',
+    description: 'Blurry shots, duplicates, forgotten screenshots — browse your camera roll one by one, swipe or tap to Keep or Remove, and win back gigabytes in minutes.',
     items: [{
-      icon: 'i-lucide-zap',
-      title: 'Predictive Alerts',
-      description: 'ML models trained on your baselines detect anomalies 4 minutes before they hit your SLOs.'
+      icon: 'i-lucide-calendar-range',
+      title: 'Sort by month or album',
+      description: 'Tackle your library in manageable chunks instead of staring down thousands of photos at once.'
     }, {
-      icon: 'i-lucide-radar',
-      title: 'Topology Mapping',
-      description: 'Auto-discovers service dependencies with zero config. See how a deploy in auth-service ripples through checkout.'
+      icon: 'i-lucide-folder-plus',
+      title: 'Albums while you sort',
+      description: 'Send keepers straight into an album mid-swipe. No extra steps needed.'
     }, {
-      icon: 'i-lucide-layers',
-      title: 'Unified Telemetry',
-      description: 'Logs, metrics, and traces in one query language. Stop context-switching. Start correlating.'
+      icon: 'i-lucide-trash-2',
+      title: 'Trash with a safety net',
+      description: 'Removed photos wait in the Trash for review — nothing is permanently deleted until you confirm it there.'
     }, {
-      icon: 'i-lucide-git-commit-horizontal',
-      title: 'Deploy Tracking',
-      description: 'Every deploy is automatically correlated with performance changes. Know which commit caused the regression.'
+      icon: 'i-lucide-undo-2',
+      title: 'Undo anytime',
+      description: 'Change your mind about any removal, or reset your sorting progress whenever you like.'
     }, {
-      icon: 'i-lucide-filter',
-      title: 'Smart Sampling',
-      description: 'AI-driven sampling retains interesting traces and drops noise. Cut storage costs 10× without losing signal.'
+      icon: 'i-lucide-hard-drive-download',
+      title: 'Storage you can see',
+      description: 'See exactly how much space you\'ve freed up after each cleanup.'
     }, {
-      icon: 'i-lucide-notebook-pen',
-      title: 'Team Notebooks',
-      description: 'Collaborative investigation notebooks that turn incident debugging into reusable runbooks.'
+      icon: 'i-lucide-lock',
+      title: 'Private by design',
+      description: 'Keep. never uploads your photos. Everything is processed and stored on your device — no cloud, no tracking, no exceptions.'
     }]
   },
   metrics: {
@@ -183,7 +183,7 @@ const { copy, copied } = useClipboard()
       orientation="horizontal"
       :ui="{
         root: 'pb-16 sm:pb-24',
-        container: 'relative z-10 py-16 sm:py-24 lg:py-28 gap-12 sm:gap-y-16 lg:gap-16 lg:grid-cols-[1.1fr_1fr]',
+        container: 'relative z-10 py-16 sm:py-24 lg:py-20 gap-12 sm:gap-y-16 lg:gap-16 lg:grid-cols-[1.1fr_1fr]',
         wrapper: 'text-center lg:text-left',
         title: 'text-4xl sm:text-6xl lg:text-6xl xl:text-7xl tracking-tighter leading-[1.05]',
         description: 'mt-5 max-w-xl mx-auto lg:mx-0 text-base sm:text-lg leading-relaxed text-default',
@@ -293,9 +293,9 @@ const { copy, copied } = useClipboard()
       </Motion>
     </UPageHero>
 
-    <!-- Features -->
+    <!-- How it works -->
     <UPageSection
-      id="features"
+      id="how-it-works"
       :ui="{
         root: 'py-24 sm:py-32 scroll-mt-(--ui-header-height)',
         container: 'max-w-5xl',
@@ -310,7 +310,7 @@ const { copy, copied } = useClipboard()
           v-bind="scrollMotion()"
           class="inline-block"
         >
-          {{ page.features.headline }}
+          {{ page.howItWorks.headline }}
         </Motion>
       </template>
 
@@ -320,7 +320,7 @@ const { copy, copied } = useClipboard()
           v-bind="scrollMotion(0.1)"
           class="inline-block"
         >
-          {{ page.features.title }}
+          {{ page.howItWorks.title }}
         </Motion>
       </template>
 
@@ -330,14 +330,14 @@ const { copy, copied } = useClipboard()
           v-bind="scrollMotion(0.2)"
           class="inline-block"
         >
-          {{ page.features.description }}
+          {{ page.howItWorks.description }}
         </Motion>
       </template>
 
       <div class="rounded-2xl border border-default bg-default overflow-hidden">
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px">
           <Motion
-            v-for="(feature, index) in page.features.items"
+            v-for="(feature, index) in page.howItWorks.items"
             :key="feature.title"
             v-bind="staggerMotion(index)"
           >
@@ -345,8 +345,8 @@ const { copy, copied } = useClipboard()
               :icon="feature.icon"
               :title="feature.title"
               :description="feature.description"
+              variant="ghost"
               class="rounded-none duration-300"
-              to="#"
               :ui="{
                 leading: 'mb-5 flex size-9 justify-center rounded-lg bg-primary/10',
                 title: 'text-sm tracking-tight',
@@ -409,8 +409,8 @@ const { copy, copied } = useClipboard()
             <UPageCard
               :title="metric.value"
               :description="metric.label"
+              variant="ghost"
               class="rounded-none duration-300"
-              to="#"
               :ui="{
                 root: 'text-center',
                 wrapper: 'items-center',
