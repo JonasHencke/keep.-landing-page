@@ -7,16 +7,28 @@ const activeSection = ref<string>()
 
 const items = computed(() => [
   {
-    label: 'Features',
-    to: '#features',
+    label: 'How it Works',
+    to: '#how-it-works',
     exactHash: true,
-    active: activeSection.value === 'features'
+    active: activeSection.value === 'how-it-works'
   },
   {
-    label: 'Metrics',
-    to: '#metrics',
+    label: 'Screenshots',
+    to: '#screenshots',
     exactHash: true,
-    active: activeSection.value === 'metrics'
+    active: activeSection.value === 'screenshots'
+  },
+  {
+    label: 'Guides',
+    to: '#guides',
+    exactHash: true,
+    active: activeSection.value === 'guides'
+  },
+  {
+    label: 'FAQ',
+    to: '#faq',
+    exactHash: true,
+    active: activeSection.value === 'faq'
   }
 ])
 
@@ -30,7 +42,7 @@ nuxtApp.hooks.hookOnce('page:loading:end', () => {
     }
   }, { rootMargin: '-50% 0px -50% 0px' })
 
-  document.querySelectorAll('#features, #metrics').forEach(el => observer.observe(el))
+  document.querySelectorAll('#how-it-works, #screenshots, #guides, #faq').forEach(el => observer.observe(el))
 })
 
 const variants: Record<string, VariantType | ((custom: unknown) => VariantType)> = {
@@ -58,31 +70,46 @@ const variants: Record<string, VariantType | ((custom: unknown) => VariantType)>
 <template>
   <UHeader>
     <template #left>
-      <NuxtLink to="/">
-        <AppLogo class="h-6 w-auto shrink-0" />
+      <NuxtLink
+        to="/"
+        aria-label="Keep. — Home"
+        class="flex shrink-0 items-center gap-2"
+      >
+        <img
+          src="/apple-touch-icon.png"
+          alt=""
+          width="32"
+          height="32"
+          class="size-8 rounded-md"
+          decoding="async"
+          fetchpriority="high"
+        >
+        <img
+          src="/images/HeaderTitle.png"
+          alt="Keep."
+          width="703"
+          height="308"
+          class="h-7 w-auto invert dark:invert-0 mt-2"
+          decoding="async"
+          fetchpriority="high"
+        >
       </NuxtLink>
 
       <TemplateMenu />
     </template>
 
-    <UNavigationMenu
-      :items="items"
-      variant="link"
-    />
-
     <template #right>
-      <UButton
-        label="Sign in"
-        color="neutral"
-        variant="ghost"
+      <UNavigationMenu
+        :items="items"
+        variant="link"
         class="hidden lg:flex"
       />
+
       <UButton
-        label="Get started"
-        color="neutral"
+        label="Download Free"
+        color="primary"
         class="hidden lg:flex"
-        to="https://ui.nuxt.com"
-        target="_blank"
+        to="#"
       />
     </template>
 
@@ -149,16 +176,10 @@ const variants: Record<string, VariantType | ((custom: unknown) => VariantType)>
 
       <div class="mt-4 flex flex-col gap-2">
         <UButton
-          label="Sign in"
-          color="neutral"
-          variant="soft"
+          label="Download Free"
+          color="primary"
           block
-        />
-        <UButton
-          label="Get started"
-          block
-          to="https://ui.nuxt.com"
-          target="_blank"
+          to="#"
         />
       </div>
     </template>
