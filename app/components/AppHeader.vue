@@ -19,12 +19,6 @@ const items = computed(() => [
     active: activeSection.value === 'screenshots'
   },
   {
-    label: 'Guides',
-    to: '#guides',
-    exactHash: true,
-    active: activeSection.value === 'guides'
-  },
-  {
     label: 'FAQ',
     to: '#faq',
     exactHash: true,

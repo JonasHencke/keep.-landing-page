@@ -88,13 +88,29 @@ const page = {
       }
     ]
   },
-  cta: {
-    title: 'Ready to stop\nfirefighting?',
-    description: 'Free for up to 5 services. No credit card. Deploys in under a minute.',
-    command: 'npx telemetry init',
-    links: [
-      { label: 'Start for free', color: 'primary', to: '#' }
-    ]
+  faq: {
+    headline: 'FAQ',
+    title: 'Questions,\nanswered.',
+    description: 'Everything you need to know about Keep. before you start swiping.',
+    items: [{
+      label: 'Does Keep. upload my photos anywhere?',
+      content: 'No. Keep. works entirely on your device — your photos are never uploaded to a server, and there is no account or tracking involved.'
+    }, {
+      label: 'Can I undo a photo I removed by mistake?',
+      content: 'Yes. You can undo any swipe instantly while sorting, and removed photos also wait in the Trash until you confirm deletion there — nothing disappears right away.'
+    }, {
+      label: 'When are my photos actually deleted?',
+      content: 'Only after you review and confirm them in the Trash. From there they go to the iOS Recently Deleted album, where Apple keeps them for another 30 days.'
+    }, {
+      label: 'Can I sort keepers into albums?',
+      content: 'Yes. While swiping, you can send any keeper straight into an existing album or create a new one on the fly — no extra steps needed.'
+    }, {
+      label: 'How much storage can I free up?',
+      content: 'It depends on your library, but most users clear out gigabytes of screenshots, duplicates and blurry shots after their first cleanup session. Keep. shows you exactly how much space you\'ve won back.'
+    }, {
+      label: 'Is Keep. free?',
+      content: 'You can try Keep. for free. The full version unlocks with a subscription on the App Store — cancel anytime.'
+    }]
   }
 } as const
 
@@ -183,8 +199,6 @@ function staggerMotion(index: number = 0, amount: number = 1) {
     transition: { duration: 0.6, delay: index * 0.08 }
   }
 }
-
-const { copy, copied } = useClipboard()
 </script>
 
 <template>
@@ -433,64 +447,58 @@ const { copy, copied } = useClipboard()
       </div>
     </UPageSection>
 
-    <!-- CTA -->
-    <UPageCTA
-      variant="naked"
+    <!-- FAQ -->
+    <UPageSection
+      id="faq"
       :ui="{
-        root: 'py-24 sm:py-32',
-        container: 'max-w-3xl text-center',
-        title: 'lg:text-5xl tracking-tighter whitespace-pre-line',
-        description: 'mx-auto max-w-sm leading-relaxed text-dimmed'
+        root: 'py-24 sm:py-32 scroll-mt-(--ui-header-height)',
+        container: 'max-w-3xl',
+        headline: 'font-mono font-medium text-xs text-primary uppercase tracking-[0.12em] text-center',
+        title: 'max-w-lg mx-auto whitespace-pre-line',
+        description: 'max-w-md mx-auto text-dimmed'
       }"
     >
-      <template #top>
-        <GradientGlow class="bottom-0 w-2/3 h-1/2" />
-      </template>
-
-      <template #title>
+      <template #headline>
         <Motion
           as="span"
           v-bind="scrollMotion()"
           class="inline-block"
         >
-          {{ page.cta.title }}
+          {{ page.faq.headline }}
+        </Motion>
+      </template>
+
+      <template #title>
+        <Motion
+          as="span"
+          v-bind="scrollMotion(0.1)"
+          class="inline-block"
+        >
+          {{ page.faq.title }}
         </Motion>
       </template>
 
       <template #description>
         <Motion
           as="span"
-          v-bind="scrollMotion(0.1)"
+          v-bind="scrollMotion(0.2)"
           class="inline-block"
         >
-          {{ page.cta.description }}
+          {{ page.faq.description }}
         </Motion>
       </template>
 
-      <template #links>
-        <Motion
-          class="flex flex-col items-center justify-center gap-6"
-          v-bind="scrollMotion(0.2)"
-        >
-          <UButton
-            v-for="link in page.cta.links"
-            :key="link.label"
-            v-bind="link"
-            size="xl"
-          />
-
-          <UButton
-            :label="page.cta.command"
-            :trailing-icon="copied ? 'i-lucide-copy-check' : 'i-lucide-copy'"
-            color="neutral"
-            variant="subtle"
-            class="font-mono font-light text-toned gap-4"
-            size="xl"
-            :ui="{ trailingIcon: 'size-5' }"
-            @click="copy(page.cta.command)"
-          />
-        </Motion>
-      </template>
-    </UPageCTA>
+      <Motion v-bind="scrollMotion(0.3)">
+        <UAccordion
+          :items="[...page.faq.items]"
+          :ui="{
+            root: 'gap-3',
+            item: 'rounded-xl border border-default bg-default px-5 data-[state=open]:bg-elevated/50',
+            trigger: 'text-base font-medium tracking-tight py-4 gap-3',
+            content: 'text-sm leading-relaxed text-dimmed pb-5'
+          }"
+        />
+      </Motion>
+    </UPageSection>
   </div>
 </template>

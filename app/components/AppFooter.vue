@@ -5,6 +5,7 @@ const links = [
   { label: 'Twitter', to: '#', target: '_blank' },
   { label: 'Instagram', to: '#' },
   { label: 'Tik Tok', to: '#' }
+  // TODO: Imprint
 ]
 </script>
 
