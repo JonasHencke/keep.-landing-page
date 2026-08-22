@@ -1,10 +1,10 @@
 <script setup lang="ts">
 const links = [
-  { label: 'Docs', to: 'https://ui.nuxt.com', target: '_blank' },
-  { label: 'GitHub', to: 'https://github.com/nuxt/ui', target: '_blank' },
-  { label: 'Twitter', to: 'https://twitter.com/nuxt_js', target: '_blank' },
-  { label: 'Status', to: '#' },
-  { label: 'Privacy', to: '#' }
+  { label: 'App Store', to: '#', target: '_blank' },
+  { label: 'Privacy', to: '#' },
+  { label: 'Twitter', to: '#', target: '_blank' },
+  { label: 'Instagram', to: '#' },
+  { label: 'Tik Tok', to: '#' }
 ]
 </script>
 
@@ -17,7 +17,7 @@ const links = [
   >
     <template #left>
       <p class="text-sm text-dimmed">
-        Built with Nuxt UI • © {{ new Date().getFullYear() }}
+        Jonas Hencke • © {{ new Date().getFullYear() }}
       </p>
     </template>
 

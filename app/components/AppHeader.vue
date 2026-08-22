@@ -94,8 +94,6 @@ const variants: Record<string, VariantType | ((custom: unknown) => VariantType)>
           fetchpriority="high"
         >
       </NuxtLink>
-
-      <TemplateMenu />
     </template>
 
     <template #right>
