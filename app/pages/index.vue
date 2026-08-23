@@ -423,7 +423,36 @@ function staggerMotion(index: number = 0, amount: number = 1) {
         </Motion>
       </template>
 
-      <div class="flex flex-wrap justify-center gap-4 sm:gap-6">
+      <Motion
+        v-bind="staggerMotion(0, 0.2)"
+        class="sm:hidden"
+      >
+        <UCarousel
+          v-slot="{ item }"
+          :items="[...page.screenshots.items]"
+          loop
+          dots
+          :autoplay="{ delay: 4000, stopOnInteraction: false, stopOnMouseEnter: true }"
+          class="mx-auto max-w-75"
+          :ui="{ dots: 'static mt-6' }"
+        >
+          <figure class="rounded-2xl border border-default overflow-hidden">
+            <img
+              :src="item.src"
+              :srcset="item.srcset"
+              sizes="(min-width: 1024px) 310px, (min-width: 640px) 45vw, calc(100vw - 2rem)"
+              :alt="item.alt"
+              width="1284"
+              height="2778"
+              loading="lazy"
+              decoding="async"
+              class="block w-full h-auto"
+            >
+          </figure>
+        </UCarousel>
+      </Motion>
+
+      <div class="hidden flex-wrap justify-center gap-4 sm:flex sm:gap-6">
         <Motion
           v-for="(screenshot, index) in page.screenshots.items"
           :key="screenshot.src"
