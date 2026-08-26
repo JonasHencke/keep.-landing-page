@@ -7,16 +7,16 @@ const activeSection = ref<string>()
 
 const items = computed(() => [
   {
-    label: 'How it Works',
-    to: '#how-it-works',
-    exactHash: true,
-    active: activeSection.value === 'how-it-works'
-  },
-  {
     label: 'Screenshots',
     to: '#screenshots',
     exactHash: true,
     active: activeSection.value === 'screenshots'
+  },
+  {
+    label: 'How it Works',
+    to: '#how-it-works',
+    exactHash: true,
+    active: activeSection.value === 'how-it-works'
   },
   {
     label: 'FAQ',

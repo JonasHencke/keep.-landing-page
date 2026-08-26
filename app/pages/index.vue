@@ -318,71 +318,6 @@ function staggerMotion(index: number = 0, amount: number = 1) {
       </Motion>
     </UPageHero>
 
-    <!-- How it works -->
-    <UPageSection
-      id="how-it-works"
-      :ui="{
-        root: 'pt-8 sm:pt-12 pb-20 sm:pb-24 scroll-mt-(--ui-header-height)',
-        container: 'max-w-5xl py-0 sm:py-0 lg:py-0',
-        headline: 'font-mono font-medium text-xs text-primary uppercase tracking-[0.12em] text-center',
-        title: 'max-w-lg mx-auto',
-        description: 'max-w-md mx-auto text-dimmed'
-      }"
-    >
-      <template #headline>
-        <Motion
-          as="span"
-          v-bind="scrollMotion()"
-          class="inline-block"
-        >
-          {{ page.howItWorks.headline }}
-        </Motion>
-      </template>
-
-      <template #title>
-        <Motion
-          as="span"
-          v-bind="scrollMotion(0.1)"
-          class="inline-block"
-        >
-          {{ page.howItWorks.title }}
-        </Motion>
-      </template>
-
-      <template #description>
-        <Motion
-          as="span"
-          v-bind="scrollMotion(0.2)"
-          class="inline-block"
-        >
-          {{ page.howItWorks.description }}
-        </Motion>
-      </template>
-
-      <div class="rounded-2xl border border-default bg-default overflow-hidden">
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px">
-          <Motion
-            v-for="(feature, index) in page.howItWorks.items"
-            :key="feature.title"
-            v-bind="staggerMotion(index)"
-          >
-            <UPageCard
-              :icon="feature.icon"
-              :title="feature.title"
-              :description="feature.description"
-              variant="ghost"
-              class="rounded-none duration-300"
-              :ui="{
-                leading: 'mb-5 flex size-9 justify-center rounded-lg bg-primary/10',
-                title: 'text-sm tracking-tight',
-                description: 'text-sm leading-relaxed sm:line-clamp-2 lg:line-clamp-3 text-dimmed'
-              }"
-            />
-          </Motion>
-        </div>
-      </div>
-    </UPageSection>
-
     <!-- Screenshots -->
     <UPageSection
       id="screenshots"
@@ -474,6 +409,71 @@ function staggerMotion(index: number = 0, amount: number = 1) {
             >
           </figure>
         </Motion>
+      </div>
+    </UPageSection>
+
+    <!-- How it works -->
+    <UPageSection
+      id="how-it-works"
+      :ui="{
+        root: 'pt-8 sm:pt-12 pb-20 sm:pb-24 scroll-mt-(--ui-header-height)',
+        container: 'max-w-5xl py-0 sm:py-0 lg:py-0',
+        headline: 'font-mono font-medium text-xs text-primary uppercase tracking-[0.12em] text-center',
+        title: 'max-w-lg mx-auto',
+        description: 'max-w-md mx-auto text-dimmed'
+      }"
+    >
+      <template #headline>
+        <Motion
+          as="span"
+          v-bind="scrollMotion()"
+          class="inline-block"
+        >
+          {{ page.howItWorks.headline }}
+        </Motion>
+      </template>
+
+      <template #title>
+        <Motion
+          as="span"
+          v-bind="scrollMotion(0.1)"
+          class="inline-block"
+        >
+          {{ page.howItWorks.title }}
+        </Motion>
+      </template>
+
+      <template #description>
+        <Motion
+          as="span"
+          v-bind="scrollMotion(0.2)"
+          class="inline-block"
+        >
+          {{ page.howItWorks.description }}
+        </Motion>
+      </template>
+
+      <div class="rounded-2xl border border-default bg-default overflow-hidden">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px">
+          <Motion
+            v-for="(feature, index) in page.howItWorks.items"
+            :key="feature.title"
+            v-bind="staggerMotion(index)"
+          >
+            <UPageCard
+              :icon="feature.icon"
+              :title="feature.title"
+              :description="feature.description"
+              variant="ghost"
+              class="rounded-none duration-300"
+              :ui="{
+                leading: 'mb-5 flex size-9 justify-center rounded-lg bg-primary/10',
+                title: 'text-sm tracking-tight',
+                description: 'text-sm leading-relaxed sm:line-clamp-2 lg:line-clamp-3 text-dimmed'
+              }"
+            />
+          </Motion>
+        </div>
       </div>
     </UPageSection>
 
