@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const links = [
-  { label: 'App Store', to: '#', target: '_blank' },
+  { label: 'App Store', to: 'https://apps.apple.com/app/id6761209065', target: '_blank' },
   { label: 'Privacy', to: '/privacy' },
   { label: 'Twitter', to: '#', target: '_blank' },
   { label: 'Instagram', to: '#' },
