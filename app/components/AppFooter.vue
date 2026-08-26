@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const links = [
   { label: 'App Store', to: '#', target: '_blank' },
-  { label: 'Privacy', to: '#' },
+  { label: 'Privacy', to: '/privacy' },
   { label: 'Twitter', to: '#', target: '_blank' },
   { label: 'Instagram', to: '#' },
   { label: 'Tik Tok', to: '#' }

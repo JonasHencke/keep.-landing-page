@@ -3,7 +3,10 @@ import { motion } from 'motion-v'
 import type { VariantType } from 'motion-v'
 
 const nuxtApp = useNuxtApp()
+const route = useRoute()
 const activeSection = ref<string>()
+
+const showNav = computed(() => route.path === '/')
 
 const items = computed(() => [
   {
@@ -92,12 +95,14 @@ const variants: Record<string, VariantType | ((custom: unknown) => VariantType)>
 
     <template #right>
       <UNavigationMenu
+        v-if="showNav"
         :items="items"
         variant="link"
         class="hidden lg:flex"
       />
 
       <UButton
+        v-if="showNav"
         label="Download Free"
         color="primary"
         class="hidden lg:flex"
@@ -107,6 +112,7 @@ const variants: Record<string, VariantType | ((custom: unknown) => VariantType)>
 
     <template #toggle="{ open, toggle, ui }">
       <UButton
+        v-if="showNav"
         size="sm"
         variant="ghost"
         color="neutral"
@@ -161,19 +167,21 @@ const variants: Record<string, VariantType | ((custom: unknown) => VariantType)>
     </template>
 
     <template #body>
-      <UNavigationMenu
-        :items="items"
-        orientation="vertical"
-      />
-
-      <div class="mt-4 flex flex-col gap-2">
-        <UButton
-          label="Download Free"
-          color="primary"
-          block
-          to="#"
+      <template v-if="showNav">
+        <UNavigationMenu
+          :items="items"
+          orientation="vertical"
         />
-      </div>
+
+        <div class="mt-4 flex flex-col gap-2">
+          <UButton
+            label="Download Free"
+            color="primary"
+            block
+            to="#"
+          />
+        </div>
+      </template>
     </template>
   </UHeader>
 </template>
