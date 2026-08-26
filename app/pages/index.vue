@@ -207,7 +207,7 @@ function staggerMotion(index: number = 0, amount: number = 1) {
     <UPageHero
       orientation="horizontal"
       :ui="{
-        root: 'pb-16 sm:pb-24',
+        root: 'pb-12 sm:pb-16',
         container: 'relative z-10 py-16 sm:py-24 lg:py-20 gap-12 sm:gap-y-16 lg:gap-16 lg:grid-cols-[1.1fr_1fr]',
         wrapper: 'text-center lg:text-left',
         title: 'text-4xl sm:text-6xl lg:text-6xl xl:text-7xl tracking-tighter leading-[1.05]',
@@ -322,8 +322,8 @@ function staggerMotion(index: number = 0, amount: number = 1) {
     <UPageSection
       id="how-it-works"
       :ui="{
-        root: 'py-24 sm:py-32 scroll-mt-(--ui-header-height)',
-        container: 'max-w-5xl',
+        root: 'pt-8 sm:pt-12 pb-20 sm:pb-24 scroll-mt-(--ui-header-height)',
+        container: 'max-w-5xl py-0 sm:py-0 lg:py-0',
         headline: 'font-mono font-medium text-xs text-primary uppercase tracking-[0.12em] text-center',
         title: 'max-w-lg mx-auto',
         description: 'max-w-md mx-auto text-dimmed'
@@ -387,7 +387,8 @@ function staggerMotion(index: number = 0, amount: number = 1) {
     <UPageSection
       id="screenshots"
       :ui="{
-        root: 'py-24 sm:py-32 scroll-mt-(--ui-header-height)',
+        root: 'pt-8 sm:pt-12 pb-20 sm:pb-24 scroll-mt-(--ui-header-height)',
+        container: 'py-0 sm:py-0 lg:py-0',
         headline: 'font-mono font-medium text-xs text-primary uppercase tracking-[0.12em] text-center',
         title: 'max-w-lg mx-auto',
         description: 'max-w-md mx-auto text-dimmed'
@@ -480,8 +481,8 @@ function staggerMotion(index: number = 0, amount: number = 1) {
     <UPageSection
       id="faq"
       :ui="{
-        root: 'py-24 sm:py-32 scroll-mt-(--ui-header-height)',
-        container: 'max-w-3xl',
+        root: 'pt-8 sm:pt-12 pb-20 sm:pb-24 scroll-mt-(--ui-header-height)',
+        container: 'max-w-3xl py-0 sm:py-0 lg:py-0',
         headline: 'font-mono font-medium text-xs text-primary uppercase tracking-[0.12em] text-center',
         title: 'max-w-lg mx-auto whitespace-pre-line',
         description: 'max-w-md mx-auto text-dimmed'
