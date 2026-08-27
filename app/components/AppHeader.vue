@@ -106,7 +106,7 @@ const variants: Record<string, VariantType | ((custom: unknown) => VariantType)>
         label="Download Free"
         color="primary"
         class="hidden lg:flex"
-        to="#"
+        to="https://apps.apple.com/app/id6761209065"
       />
     </template>
 
@@ -178,7 +178,7 @@ const variants: Record<string, VariantType | ((custom: unknown) => VariantType)>
             label="Download Free"
             color="primary"
             block
-            to="#"
+            to="https://apps.apple.com/app/id6761209065"
           />
         </div>
       </template>

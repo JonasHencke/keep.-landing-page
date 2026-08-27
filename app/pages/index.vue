@@ -21,7 +21,7 @@ const page = {
       icon: 'i-simple-icons-appstore',
       color: 'primary',
       size: 'xl',
-      to: '#',
+      to: 'https://apps.apple.com/app/id6761209065',
       target: '_blank'
     }, {
       label: 'See how it works',
