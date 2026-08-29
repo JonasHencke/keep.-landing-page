@@ -2,9 +2,9 @@
 const links = [
   { label: 'App Store', to: 'https://apps.apple.com/app/id6761209065', target: '_blank' },
   { label: 'Privacy', to: '/privacy' },
-  { label: 'Twitter', to: '#', target: '_blank' },
-  { label: 'Instagram', to: '#' },
-  { label: 'Tik Tok', to: '#' }
+  { label: 'Twitter', to: 'https://x.com/keepcleanerapp', target: '_blank' },
+  { label: 'Instagram', to: 'https://www.instagram.com/keepcleaner.app/', target: '_blank' },
+  { label: 'Tik Tok', to: 'https://www.tiktok.com/@keepcleaner.app', target: '_blank' }
   // TODO: Imprint
 ]
 </script>
