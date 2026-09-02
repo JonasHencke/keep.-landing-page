@@ -4,8 +4,8 @@ const links = [
   { label: 'Privacy', to: '/privacy' },
   { label: 'Twitter', to: 'https://x.com/keepcleanerapp', target: '_blank' },
   { label: 'Instagram', to: 'https://www.instagram.com/keepcleaner.app/', target: '_blank' },
-  { label: 'Tik Tok', to: 'https://www.tiktok.com/@keepcleaner.app', target: '_blank' }
-  // TODO: Imprint
+  { label: 'Tik Tok', to: 'https://www.tiktok.com/@keepcleaner.app', target: '_blank' },
+  { label: 'Imprint', to: '/imprint' }
 ]
 </script>
 
