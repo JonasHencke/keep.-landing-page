@@ -3,6 +3,9 @@
 FROM node:22-alpine AS build
 WORKDIR /app
 
+ARG NUXT_PUBLIC_SITE_URL
+ENV NUXT_PUBLIC_SITE_URL=$NUXT_PUBLIC_SITE_URL
+
 RUN corepack enable
 
 # Copy package.json and your lockfile, here we add pnpm-lock.yaml for illustration
